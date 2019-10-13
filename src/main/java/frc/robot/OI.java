@@ -7,11 +7,19 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.DigitalSource;
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
+  private static final DigitalSource sourceA = null;
+  private static final DigitalSource sourceB = null;
   //// CREATING BUTTONS
   // One type of button is a joystick button which is any button on a
   //// joystick.
@@ -19,11 +27,12 @@ public class OI {
   // number it is.
   // Joystick stick = new Joystick(port);
   // Button button = new JoystickButton(stick, buttonNumber);
-  Joystick stick = new joystick(0);
+  public Joystick arcadeStick = new Joystick(0);
+  Button theButton = new JoystickButton(arcadeStick, 0);
 
-  Button buttonGreen = new JoystickButton(0,1);
 
-
+  Encoder leftEncoder = new Encoder(sourceA, sourceB);
+  Encoder rightEncoder = new Encoder(sourceA, sourceB);
   // There are a few additional built in buttons you can use. Additionally,
   // by subclassing Button you can create custom triggers and bind those to
   // commands the same as any other Button.
@@ -43,4 +52,8 @@ public class OI {
   // Start the command when the button is released and let it run the command
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
+
+  public Joystick getJoystick(){
+    return arcadeStick;
+  }
 }
